@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://uo6ud7hqhlcb"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_didtf"]
+[ext_resource type="Texture2D" uid="uid://dm7kb0gs7cec8" path="res://icon.svg" id="2_unny7"]
+[ext_resource type="Script" path="res://Sprite2D2.gd" id="3_bk4fp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nvp4"]
+radius = 7.0
+height = 24.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+process_priority = -4
+floor_stop_on_slope = false
+script = ExtResource("1_didtf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.117188, 0.191406)
+texture = ExtResource("2_unny7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("CapsuleShape2D_1nvp4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="Weapon" type="Sprite2D" parent="."]
+position = Vector2(13, -4)
+scale = Vector2(0.21875, 0.046875)
+texture = ExtResource("2_unny7")
+script = ExtResource("3_bk4fp")
+
+[node name="Marker2D" type="Marker2D" parent="Weapon"]

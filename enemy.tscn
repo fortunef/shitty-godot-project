@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0ieti5xqcasg"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_t2jnn"]
+[ext_resource type="Texture2D" uid="uid://dm7kb0gs7cec8" path="res://icon.svg" id="2_ku5n0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b4qp5"]
+radius = 18.75
+height = 50.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivfd5"]
+radius = 19.0
+height = 82.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ag0y"]
+size = Vector2(40.625, 43.3334)
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.64, 0.6)
+script = ExtResource("1_t2jnn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.7486e-07, -7.5)
+scale = Vector2(0.3125, 0.648438)
+texture = ExtResource("2_ku5n0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.66667)
+shape = SubResource("CapsuleShape2D_b4qp5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_ivfd5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26.6667)
+shape = SubResource("RectangleShape2D_6ag0y")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
